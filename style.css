@@ -1,3 +1,181 @@
-#container{
-    background-color: aqua;
+/* Remove margens e configurações padrão do navegador,
+padronizando o layout e a fonte do projeto */
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial,sans-serif;
+}
+
+/* Configura o fundo da página e centraliza
+todo o conteúdo principal do jogo */
+body{
+    background:#1a1a1a;
+    display:flex;
+    justify-content:center;
+    padding:20px;
+}
+/*Container principal que limita a largura do jogo
+e mantém tudo organizado no centro da tela */
+.container{
+    text-align:center;
+    max-width:600px;
+    width:100%;
+    border:1px;
+    border-radius:16px;
+    padding:24px;
+    box-shadow:0 10px 30px rgba(0, 0, 0, 0.5);
+    align-self:flex-start;
+    background: #242424;
+    border: 1 px solid #444;
+}
+
+/* Organiza a área superior que contém
+o seletor de dificuldade e o cronômetro */
+.top{
+    display:flex;
+    justify-content:space-between;
+    margin:15px 0;
+}
+
+
+.buttons button {
+    padding: 11px 16px;
+    color: white;
+    background-color: #159a8c;
+    border: 1px solid #159a8c;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.2s ease,
+                transform 0.2s ease,
+                box-shadow 0.2s ease;
+}
+
+/* Efeito ao passar o mouse */
+.buttons button:hover {
+    background-color: #11796f;
+    border-color: #11796f;
+    box-shadow: 0 4px 10px rgba(21, 154, 140, 0.25);
+    transform: translateY(-2px);
+}
+
+/* Efeito ao clicar */
+.buttons button:active {
+    transform: translateY(0);
+    box-shadow: none;
+}
+
+/* Destaque ao navegar pelos botões com o teclado */
+.buttons button:focus-visible {
+    outline: 2px solid #64d8cb;
+    outline-offset: 3px;
+}
+
+
+#timer{
+    font-size: 25px;
+    color:white;
+    font-variant-numeric:tabular-nums;
+}
+
+.titulo-h1 {
+    color: white;
+    margin-bottom:20px;
+    text-align: center;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    letter-spacing:2px;
+}
+
+.dicas{
+    color:white;
+    margin-bottom:20px;
+    text-align: center;
+    font-size: 18px;
+}
+
+#hints{
+    color:white;
+    margin-bottom:20px;
+    text-align: center;
+    font-size: 18px;
+}
+
+#board {
+    display:grid;
+    grid-template-columns: repeat(9, 1fr);
+    margin-top:20px;
+    width: min(100%, 450px);
+    margin: 20px auto 0;
+}
+
+.celula {
+    color: white;
+    background-color: #333;
+    border: 1px solid #666;
+    min-height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 20px;
+    padding: 0;
+    min-width: 0;
+    aspect-ratio: 1;
+}
+
+/* Célula selecionada */
+.celula.selecionada {
+    background-color: #1976d2;
+    border: 2px solid #64b5f6;
+}
+
+/* Células da mesma linha, coluna ou região */
+.celula.relacionada {
+    background-color: #454545;
+}
+
+/* Números que violam as regras do Sudoku */
+.celula.erro {
+    background-color: #b71c1c;
+    color: #ffffff;
+    border: 1px solid #ff5252;
+}
+
+/* Separação dos blocos 3x3 */
+.celula {
+    border: 1px solid #666;
+    box-sizing: border-box;
+    min-width: 0;
+    aspect-ratio: 1;
+    padding: 0;
+}
+
+/* Linha vertical entre os blocos */
+.celula:nth-child(3n) {
+    border-right: 3px solid #159a8c;
+}
+
+/* Linha horizontal entre os blocos */
+.celula:nth-child(n + 19):nth-child(-n + 27),
+.celula:nth-child(n + 46):nth-child(-n + 54),
+.celula:nth-child(n + 73):nth-child(-n + 81) {
+    border-bottom: 3px solid #159a8c;
+}
+
+/* Contorno externo do tabuleiro */
+.celula:nth-child(-n + 9) {
+    border-top: 3px solid #159a8c;
+}
+
+.celula:nth-child(9n + 1) {
+    border-left: 3px solid #159a8c;
+}
+
+.celula:nth-child(9n) {
+    border-right: 3px solid #159a8c;
+}
+
+.celula:nth-child(n + 73) {
+    border-bottom: 3px solid #159a8c;
 }
